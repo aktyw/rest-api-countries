@@ -1,0 +1,10 @@
+*.sketch
+*.xd
+*.fig
+.DS_Store
+style-guide.md
+readme-template.md
+node_modules/
+design/
+dist/
+parcel-cache/
