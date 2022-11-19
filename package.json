@@ -2,9 +2,8 @@
   "name": "rest-countries-api-with-color-theme-switcher-master",
   "version": "1.0.0",
   "description": "![Design preview for the REST Countries API with color theme switcher coding challenge](./design/desktop-preview.jpg)",
-  "source": "index.html",
   "scripts": {
-    "start": "parcel"
+    "start": "parcel index.html"
   },
   "keywords": [],
   "author": "",

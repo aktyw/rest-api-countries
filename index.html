@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.scss">
-    <script src="scripts/index.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/style.scss" />
+    <script src="scripts/index.js" type="module"></script>
     <title>Rest Countries API</title>
-</head>
-<body>
-    <h1>Rest countries</h1>
-</body>
+  </head>
+  <body>
+    <header>
+        <div class="wrapper">
+          <nav>
+            <h1>Where in the world?</h1>
+            <button>Dark Mode</button>
+          </nav>
+        </div>
+      </nav>
+    </header>
+    <div class="wrapper">
+      <div class="finder">
+        <div class="search">
+          <label for="country">Search for a country...</label>
+          <input class="search__input" type="search" id="country-search" name="search">
+        </div>
+        <div class="filter">
+          <select  name="country" id="country-filter">
+            <option value="">Filter by Region</option>
+            <option value="">Africa</option>
+            <option value="">America</option>
+            <option value="">Asia</option>
+            <option value="">Europe</option>
+            <option value="">Oceania</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <main>
+      <div class="wrapper">
+        <div class="countries"></div>
+      </div>
+    </main>
+  </body>
 </html>

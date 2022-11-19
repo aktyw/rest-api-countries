@@ -1,0 +1,43 @@
+$mobile: 375px;
+$desktop: 1440px;
+
+$homepage: 14px;
+$detailpage: 16px;
+
+$thin: 300;
+$medium: 600;
+$bold: 800;
+
+$colors: (
+  lightMode: (
+    veryDarkBlue: hsl(200, 15%, 8%),
+    darkGray: hsl(0, 0%, 52%),
+    veryLightGray: hsl(0, 0%, 98%),
+    white: hsl(0, 0%, 100%),
+  ),
+  darkMode: (
+    darkBlue: hsl(209, 23%, 22%),
+    veryDarkBlue: hsl(207, 26%, 17%),
+    white: hsl(0, 0%, 100%),
+  ),
+);
+
+@function get-color($color, $mode: lightMode) {
+  @return map-get($colors, $mode, $color);
+}
+
+@mixin media($type) {
+  @media screen and (min-width: $type) {
+    @content;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+}

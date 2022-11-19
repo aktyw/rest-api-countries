@@ -7,4 +7,4 @@ readme-template.md
 node_modules/
 design/
 dist/
-parcel-cache/
+.parcel-cache/
