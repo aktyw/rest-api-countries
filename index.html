@@ -13,7 +13,7 @@
         <div class="wrapper">
           <nav>
             <h1>Where in the world?</h1>
-            <button>Dark Mode</button>
+            <button class="btn btn__mode"><img class="icon" src="./img/moon-outline.svg" alt="darkmode icon"></span>Dark Mode</button>
           </nav>
         </div>
       </nav>
@@ -21,24 +21,80 @@
     <div class="wrapper">
       <div class="finder">
         <div class="search">
-          <label for="country">Search for a country...</label>
-          <input class="search__input" type="search" id="country-search" name="search">
+          <label for="country-search"></label>
+          <div class="input-container">
+            <img class="search__icon" src="./img/search-outline.svg" alt="">
+            <input class="search__input" type="search" id="country-search" name="q" placeholder="Search for a country...">
+          </div>
         </div>
         <div class="filter">
-          <select  name="country" id="country-filter">
-            <option value="">Filter by Region</option>
-            <option value="">Africa</option>
-            <option value="">America</option>
-            <option value="">Asia</option>
-            <option value="">Europe</option>
-            <option value="">Oceania</option>
+          <details>
+            <summary class="filter__label">
+              Filter by Region
+            </summary>
+              <ul class="filter__list">
+                <li value="all">All</li>
+                <li value="africa">Africa</li>
+                <li value="america">America</li>
+                <li value="asia">Asia</li>
+                <li value="europe">Europe</li>
+                <li value="oceania">Oceania</li>
+              </ul>
+          </details>
           </select>
         </div>
       </div>
     </div>
     <main>
       <div class="wrapper">
-        <div class="countries"></div>
+        <section class="countries">
+
+          <!-- COUNTRY COMPONENT TEMP -->
+          <div class="country">
+            <img src="../beautiful-shot-of-a-bicycle-in-the-grassy-field-during-sunset-in-tczew-poland.jpg" alt="flag" class="country__flag">
+            <div class="country__info">
+              <h2 class="country__name">Poland</h2>
+              <ul>
+                <li class="country__desc"><span class="country__desc-bold">Population:</span> 40.000</li>
+                <li class="country__desc"><span class="country__desc-bold">Region:</span> Europe</li>
+                <li class="country__desc"><span class="country__desc-bold">Capital:</span> Warsaw</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- COUNTRY DETAIL TEMP -->
+          <button class="btn btn__prev">Back</button>
+          <section class="details-country">
+            <img src="../beautiful-shot-of-a-bicycle-in-the-grassy-field-during-sunset-in-tczew-poland.jpg" alt="flag" class="details-country__flag">
+            <div class="details-country__info">
+              <h2 class="country__name">Belgium</h2>
+              <div class="details-country__info-container">
+                <ul>
+                  <li value="name" class="country__desc"><span class="country__desc-bold">Native Name: </span>Belgie</li>
+                  <li value="population" class="country__desc"><span class="country__desc-bold">Population </span>24124</li>
+                  <li value="region" class="country__desc"></li>
+                  <li value="subregion" class="country__desc"></li>
+                  <li value="capital" class="country__desc"></li>
+                </ul>
+                <ul>
+                  <li value="domain" class="country__desc"></li>
+                  <li value="currencies" class="country__desc"></li>
+                  <li value="languages" class="country__desc"></li>
+                </ul>
+              </div>
+              <div class="details-country__border">
+                <h3>Border Countries:</h3>
+                <ul>
+                  <li class="details-country__border-item">France</li>
+                  <li class="details-country__border-item">Germany</li>
+                  <li class="details-country__border-item">Netherlands</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          
+
+        </section>
       </div>
     </main>
   </body>
