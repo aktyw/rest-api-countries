@@ -1,11 +1,40 @@
 @use 'base';
 
 body {
+  font-size: 62.5%;
   background-color: get-color(white);
+  color: get-color(veryDarkBlue);
+}
+
+body,
+input,
+textarea,
+button {
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 h1 {
-  font-size: $detailpage;
+  font-size: 1rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+p,
+li,
+ul,
+span,
+button {
+  font-size: 1rem;
+}
+summary,
+li {
+  list-style: none;
 }
 
 .wrapper {
@@ -16,20 +45,31 @@ h1 {
 .icon {
   width: $homepage;
   margin: 0 5px;
-  vertical-align: top;
 }
 
 .btn {
-  box-shadow: rgba(36, 36, 36, 0.1) 0px 1px 25px 0px;
+  position: relative;
   background-color: get-color(white);
-  padding: 10px 30px;
+  padding: 10px 50px;
   border: none;
   cursor: pointer;
+  box-shadow: rgba(36, 36, 36, 0.1) 0px 1px 25px 0px;
+
+  &__prev {
+    box-shadow: rgba(36, 36, 36, 0.1) 0px 1px 25px 0px;
+    border-radius: 5px;
+
+    &::before {
+      content: '\1F850';
+      position: absolute;
+      left: 12px;
+      top: 6px;
+      font-size: 1.4rem;
+    }
+  }
 
   &__mode {
     padding: 10px 0;
-  }
-
-  &__icon {
+    box-shadow: none;
   }
 }

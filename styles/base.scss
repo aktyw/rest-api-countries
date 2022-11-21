@@ -1,8 +1,8 @@
 $mobile: 375px;
 $desktop: 1440px;
 
-$homepage: 14px;
-$detailpage: 16px;
+$homepage: 0.9rem;
+$detailpage: 1rem;
 
 $thin: 300;
 $medium: 600;
@@ -26,7 +26,7 @@ $colors: (
   @return map-get($colors, $mode, $color);
 }
 
-@mixin media($type) {
+@mixin media($type: $desktop) {
   @media screen and (min-width: $type) {
     @content;
   }
@@ -38,11 +38,4 @@ $colors: (
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-body,
-input,
-textarea,
-button {
-  font-family: 'Nunito Sans', sans-serif;
 }

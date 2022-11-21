@@ -40,7 +40,6 @@ nav {
   &__label,
   &__list {
     width: 15em;
-    list-style: none;
     cursor: pointer;
   }
 
@@ -51,9 +50,14 @@ nav {
     padding-left: 30px;
 
     &::after {
-      content: '<';
+      content: '\276F';
+      font-size: 10px;
       position: absolute;
       right: 30px;
+    }
+
+    &-container[open] > &::after {
+      transform: rotate(90deg);
     }
   }
 
@@ -133,7 +137,9 @@ nav {
   }
 
   &__name {
-    margin-bottom: 15px;
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+    font-weight: $bold;
   }
 
   &__desc {
@@ -147,6 +153,10 @@ nav {
   }
 }
 
+// ----------------------------------------------------------------
+// COUNTRIES DETAILS
+// ----------------------------------------------------------------
+
 .details-country__flag,
 .country__flag {
   width: 100%;
@@ -154,4 +164,32 @@ nav {
 }
 
 .details-country {
+  padding: 50px 0;
+
+  &__flag {
+    margin: 40px 0;
+  }
+
+  & ul {
+    margin-top: 25px;
+  }
+
+  & li {
+    font-size: 0.9rem;
+  }
+
+  &__border ul {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  &__border > h3 {
+    margin: 25px 0;
+  }
+
+  &__border-item {
+    @extend .btn;
+    padding: 10px 25px;
+  }
 }
