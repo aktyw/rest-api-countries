@@ -30,16 +30,26 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-top: 30px;
+  margin: 40px 0;
   font-size: $homepage;
+
+  @include media {
+    flex-direction: row;
+    align-items: center;
+    margin: 50px 0;
+  }
 }
 
 .filter {
-  padding: 30px 0;
+  padding-top: 40px;
+
+  @include media {
+    padding-top: 0;
+  }
 
   &__label,
   &__list {
-    width: 15em;
+    width: 15rem;
     cursor: pointer;
   }
 
@@ -88,9 +98,13 @@ nav {
     box-shadow: rgba(36, 36, 36, 0.15) 0px 2px 25px 0px;
     width: 100%;
     border: none;
+    padding: 0 70px;
+
+    @include media {
+      min-width: 500px;
+    }
 
     &::placeholder {
-      padding: 0 70px;
       color: get-color(darkGray);
       opacity: 0.7;
     }
@@ -117,13 +131,21 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 40px 0px;
+
+  @include media {
+    flex-flow: row wrap;
+    justify-content: space-between;
+    gap: 50px;
+  }
 }
 
 .country {
+  display: flex;
+  flex-direction: column;
   width: 300px;
   border-radius: 10px;
   box-shadow: rgba(36, 36, 36, 0.1) 0px 2px 25px 0px;
-
   font-size: $homepage;
 
   &__flag {
@@ -140,6 +162,10 @@ nav {
     font-size: 1.6rem;
     margin-bottom: 25px;
     font-weight: $bold;
+
+    @include media {
+      font-size: 1.4rem;
+    }
   }
 
   &__desc {
@@ -157,21 +183,59 @@ nav {
 // COUNTRIES DETAILS
 // ----------------------------------------------------------------
 
-.details-country__flag,
-.country__flag {
-  width: 100%;
-  object-fit: cover;
+.details-country-container {
+  margin: 40px 0;
+
+  @include media {
+    display: flex;
+    margin: 60px 0;
+  }
 }
 
 .details-country {
-  padding: 50px 0;
+  margin-top: 40px;
+
+  @include media {
+    margin-top: 60px;
+  }
 
   &__flag {
-    margin: 40px 0;
+    width: 100%;
+    object-fit: cover;
+    margin-bottom: 25px;
+
+    @include media {
+      width: 50%;
+      padding-right: 50px;
+      min-width: 500px;
+    }
+  }
+
+  &__info {
+    @include media {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 50%;
+      padding-left: 100px;
+    }
+  }
+
+  &__info-container {
+    @include media {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 150px;
+      align-items: flex-start;
+    }
   }
 
   & ul {
     margin-top: 25px;
+
+    @include media {
+      margin: 0;
+    }
   }
 
   & li {
@@ -180,8 +244,8 @@ nav {
 
   &__border ul {
     display: flex;
-    gap: 10px;
     flex-wrap: wrap;
+    gap: 10px;
   }
 
   &__border > h3 {
@@ -190,6 +254,6 @@ nav {
 
   &__border-item {
     @extend .btn;
-    padding: 10px 25px;
+    padding: 5px 25px;
   }
 }

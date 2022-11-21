@@ -15,6 +15,10 @@ button {
 
 h1 {
   font-size: 1rem;
+
+  @include media {
+    font-size: 1.4rem;
+  }
 }
 
 h2 {
@@ -23,6 +27,10 @@ h2 {
 
 h3 {
   font-size: 1.2rem;
+
+  @include media {
+    font-size: 1rem;
+  }
 }
 
 p,
@@ -54,10 +62,10 @@ li {
   border: none;
   cursor: pointer;
   box-shadow: rgba(36, 36, 36, 0.1) 0px 1px 25px 0px;
+  border-radius: 5px;
 
   &__prev {
     box-shadow: rgba(36, 36, 36, 0.1) 0px 1px 25px 0px;
-    border-radius: 5px;
 
     &::before {
       content: '\1F850';
