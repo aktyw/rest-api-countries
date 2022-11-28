@@ -17,6 +17,7 @@ class View {
 
   generateCountriesMarkup(data) {
     this._data = data;
+    this._clear();
     this._data.countries.forEach(
       (
         {
@@ -32,24 +33,12 @@ class View {
         },
         i
       ) => {
-        console.log(
-          name,
-          capital,
-          borders,
-          languages,
-          population,
-          flags,
-          currencies,
-          region,
-          subregion
-        );
-
         const markup = `<div class="country">
       <img src="${flags['svg']}" alt="flag" class="country__flag">
       <div class="country__info">
         <h2 class="country__name">${name.common}</h2>
         <ul>
-          <li class="country__desc"><span class="country__desc-bold">Population:</span>${population}</li>
+          <li class="country__desc"><span class="country__desc-bold">Population:</span> ${population}</li>
           <li class="country__desc"><span class="country__desc-bold">Region:</span> ${region}</li>
           <li class="country__desc"><span class="country__desc-bold">Capital:</span> ${capital}</li>
         </ul>

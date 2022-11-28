@@ -2,7 +2,9 @@ import { Transformer } from '@parcel/plugin';
 import { API_URL } from './config.js';
 import { getJSON } from './helpers.js';
 
-export const state = {};
+export const state = {
+  countries: '',
+};
 
 const createCountryObject = function (data) {
   const country = data;
@@ -19,32 +21,15 @@ const createCountryObject = function (data) {
   };
 };
 
-const loadCountry = async function () {};
-
-const filterRegion = async function (region) {
+export const getCountries = async function (region = 'all') {
   try {
-    const url = `${API_URL}/region/${region}`;
+    let url = `${API_URL}/region/${region}`;
+    if (region === 'all') {
+      url = `${API_URL}/all`;
+    }
     const data = await getJSON(url);
-    state.countries = data.map((d) => createCountryObject(d));
+    state.countries = data.map((country) => createCountryObject(country));
   } catch (error) {
     console.log(error);
   }
 };
-
-const init = async function () {
-  try {
-    const url = `${API_URL}/all`;
-    const data = await getJSON(url);
-    state.countries = data.map((d) => createCountryObject(d));
-    // console.table(
-    //   state.countries.forEach(({ name, capital }, i) => {
-    //     console.log(name, capital);
-    //   })
-    // );
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-init();
-// https://restcountries.com/v3.1/region/{region}

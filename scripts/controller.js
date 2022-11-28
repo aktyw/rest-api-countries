@@ -2,13 +2,11 @@ import * as model from './model.js';
 import view from './view.js';
 import { Transformer } from '@parcel/plugin';
 
-const controlCountries = async function (data) {
-  view.generateCountriesMarkup(model.state.countries);
-};
-
-const filterRegion = async function ({ target }) {
+const controlCountries = async function ({ target }) {
   try {
     const { value } = target.dataset;
+    await model.getCountries(value);
+    view.generateCountriesMarkup(model.state);
     console.log(value);
   } catch (error) {
     console.log(error);
@@ -17,11 +15,12 @@ const filterRegion = async function ({ target }) {
 
 const init = async function () {
   try {
-    view.addHandlerFilter(filterRegion);
+    await model.getCountries();
+    view.addHandlerFilter(controlCountries);
     view.generateCountriesMarkup(model.state);
   } catch (error) {
     console.log(error);
   }
 };
 
-document.addEventListener('click', init)
+init();
