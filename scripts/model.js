@@ -4,10 +4,12 @@ import { getJSON } from './helpers.js';
 
 export const state = {
   countries: '',
+  countryDetail: '',
 };
 
 const createCountryObject = function (data) {
   const country = data;
+  // console.log(country);
   return {
     name: country.name,
     capital: country.capital,
@@ -18,7 +20,16 @@ const createCountryObject = function (data) {
     currencies: country.currencies,
     region: country.region,
     subregion: country.subregion,
+    domain: country.tld,
+    shortname: country.cca3,
   };
+};
+
+export const getDetailCountry = function (name) {
+  const dataCountry = state.countries.find(
+    (country) => country.name.common === name.textContent
+  );
+  state.countryDetail = dataCountry;
 };
 
 export const getCountries = async function (region = 'all') {

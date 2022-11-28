@@ -143,10 +143,10 @@ nav {
   flex-direction: column;
   align-items: center;
   gap: 40px 0px;
+  margin-bottom: 40px;
 
   @include media {
     flex-flow: row wrap;
-    justify-content: space-between;
     gap: 50px;
   }
 }
@@ -158,6 +158,12 @@ nav {
   border-radius: 10px;
   box-shadow: $shadow;
   font-size: $homepage;
+  transition: background-color 0.3s;
+
+  &:hover {
+    cursor: pointer;
+    background-color: get-color(lightBlue);
+  }
 
   &__flag {
     width: 300px;
@@ -273,4 +279,7 @@ nav {
     @extend .btn;
     padding: 5px 25px;
   }
+}
+.hide {
+  display: none !important;
 }
