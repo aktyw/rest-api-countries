@@ -73,13 +73,24 @@ nav {
 
   &__list {
     position: absolute;
-    margin-top: 5px;
-    padding: 15px 30px;
+    margin-top: 10px;
     z-index: 100;
     background-color: get-color(white);
 
+    @include media() {
+      margin-top: 15px;
+    }
     & > li {
-      padding: 5px 0;
+      transition: background-color 0.3s;
+      padding: 15px 30px;
+
+      @include media() {
+        padding: 10px 30px;
+      }
+    }
+
+    & li:hover {
+      background-color: get-color(lightBlue);
     }
   }
 }
@@ -87,7 +98,7 @@ nav {
 .filter__label,
 .filter__list,
 .search__input {
-  box-shadow: rgba(36, 36, 36, 0.15) 0px 2px 25px 0px;
+  box-shadow: $shadow;
   border-radius: 5px;
 }
 
@@ -95,7 +106,7 @@ nav {
   &__input {
     height: 50px;
     border-radius: 5px;
-    box-shadow: rgba(36, 36, 36, 0.15) 0px 2px 25px 0px;
+    box-shadow: $shadow;
     width: 100%;
     border: none;
     padding: 0 70px;
@@ -145,23 +156,29 @@ nav {
   flex-direction: column;
   width: 300px;
   border-radius: 10px;
-  box-shadow: rgba(36, 36, 36, 0.1) 0px 2px 25px 0px;
+  box-shadow: $shadow;
   font-size: $homepage;
 
   &__flag {
-    width: 100%;
+    width: 300px;
+    height: 200px;
     object-fit: cover;
     border-radius: 10px 10px 0 0;
   }
 
   &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 25px;
+    min-height: 220px;
   }
 
   &__name {
     font-size: 1.6rem;
     margin-bottom: 25px;
     font-weight: $bold;
+    line-height: 20px;
 
     @include media {
       font-size: 1.4rem;

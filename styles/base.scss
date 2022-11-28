@@ -11,6 +11,7 @@ $bold: 800;
 $colors: (
   lightMode: (
     veryDarkBlue: hsl(200, 15%, 8%),
+    lightBlue: hsl(189, 28%, 95%),
     darkGray: hsl(0, 0%, 52%),
     veryLightGray: hsl(0, 0%, 98%),
     white: hsl(0, 0%, 100%),
@@ -21,6 +22,8 @@ $colors: (
     white: hsl(0, 0%, 100%),
   ),
 );
+
+$shadow: rgba(36, 36, 36, 0.1) 0px 2px 5px 0px;
 
 @function get-color($color, $mode: lightMode) {
   @return map-get($colors, $mode, $color);

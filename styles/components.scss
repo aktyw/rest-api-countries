@@ -1,5 +1,7 @@
 @use 'base';
 
+
+
 body {
   font-size: 62.5%;
   background-color: get-color(white);
@@ -61,12 +63,10 @@ li {
   padding: 10px 50px;
   border: none;
   cursor: pointer;
-  box-shadow: rgba(36, 36, 36, 0.1) 0px 1px 25px 0px;
+  box-shadow: $shadow;
   border-radius: 5px;
 
   &__prev {
-    box-shadow: rgba(36, 36, 36, 0.1) 0px 1px 25px 0px;
-
     &::before {
       content: '\1F850';
       position: absolute;
