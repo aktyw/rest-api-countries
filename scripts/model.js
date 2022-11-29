@@ -5,12 +5,12 @@ import { getJSON } from './helpers.js';
 export const state = {
   allCountries: '',
   countries: '',
+  searchCountries: '',
   countryDetail: '',
 };
 
 const createCountryObject = function (data) {
   const country = data;
-  // console.log(country);
   return {
     name: country.name,
     capital: country.capital,
@@ -36,6 +36,15 @@ export const getDetailCountry = function (name) {
 export const getAllCountries = async function () {
   const data = await getJSON(`${API_URL}/all`);
   state.allCountries = data.map((country) => createCountryObject(country));
+};
+
+export const getSearchCountries = function (data) {
+  state.searchCountries = Object.values(state.allCountries).filter(
+    (country) => {
+      return country.name.common.toLowerCase().includes(data.toLowerCase());
+    }
+  );
+  console.log();
 };
 
 export const getCountries = async function (region = 'all') {

@@ -2,6 +2,7 @@ class View {
   _data;
   _parentElement = document.querySelector('.countries');
   _finder = document.querySelector('.finder');
+  _search = document.querySelector('.search__input');
   _filter = document.querySelector('.filter__list');
 
   render(data) {
@@ -17,6 +18,13 @@ class View {
 
   addHandlerFilter(handler) {
     this._filter.addEventListener('click', handler);
+  }
+
+  addHandlerSearch(handler) {
+    this._search.addEventListener('input', (e) => {
+      const query = e.target.value;
+      handler(query);
+    });
   }
 
   addHandlerDetailPage(handler) {
@@ -71,7 +79,6 @@ class View {
       currencies,
       region,
       subregion,
-      shortname,
     } = this._data.countryDetail;
     return `
     <section class="details-country">
@@ -89,8 +96,12 @@ class View {
                     }</li>
                     <li value="population" class="country__desc"><span class="country__desc-bold">Population: </span>${population}</li>
                     <li value="region" class="country__desc"><span class="country__desc-bold">Region: </span>${region}</li>
-                    <li value="subregion" class="country__desc"><span class="country__desc-bold">Sub Region: </span>${subregion}</li>
-                    <li value="capital" class="country__desc"><span class="country__desc-bold">Capital: </span>${capital}</li>
+                    <li value="subregion" class="country__desc"><span class="country__desc-bold">Sub Region: </span>${
+                      subregion ? subregion : 'No sub region'
+                    }</li>
+                    <li value="capital" class="country__desc"><span class="country__desc-bold">Capital: </span>${
+                      capital ? capital : 'No capital'
+                    }</li>
                   </ul>
                   <ul>
                     <li value="domain" class="country__desc"><span class="country__desc-bold">Top Level Domain: </span>${Object.values(
@@ -134,10 +145,29 @@ class View {
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
+  renderSearchCountries(data) {
+    this._data = data;
+    this._clear();
+    this._finder.classList.remove('hide');
+    this._data.searchCountries.forEach(
+      ({ name, capital, population, flags, region }) => {
+        const markup = this._generateCountryMarkup({
+          name,
+          flags,
+          population,
+          region,
+          capital,
+        });
+        this._parentElement.insertAdjacentHTML('afterbegin', markup);
+      }
+    );
+  }
+
   renderCountries(data) {
     this._data = data;
     this._clear();
     this._finder.classList.remove('hide');
+
     this._data.countries.forEach(
       ({ name, capital, population, flags, region }) => {
         const markup = this._generateCountryMarkup({

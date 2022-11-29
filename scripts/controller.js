@@ -29,6 +29,11 @@ const goBack = async function () {
   }
 };
 
+const controlSearchCountry = function (query) {
+  model.getSearchCountries(query);
+  view.renderSearchCountries(model.state);
+};
+
 const init = async function () {
   try {
     await model.getCountries();
@@ -38,6 +43,7 @@ const init = async function () {
     view.addHandlerDetailPage(controlDetailPage);
     view.addBorderHandler(controlDetailPage);
     view.addHandlerBack(goBack);
+    view.addHandlerSearch(controlSearchCountry);
   } catch (error) {
     console.log(error);
   }
