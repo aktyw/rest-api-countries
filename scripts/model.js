@@ -3,6 +3,7 @@ import { API_URL } from './config.js';
 import { getJSON } from './helpers.js';
 
 export const state = {
+  allCountries: '',
   countries: '',
   countryDetail: '',
 };
@@ -26,10 +27,15 @@ const createCountryObject = function (data) {
 };
 
 export const getDetailCountry = function (name) {
-  const dataCountry = state.countries.find(
+  const dataCountry = state.allCountries.find(
     (country) => country.name.common === name.textContent
   );
   state.countryDetail = dataCountry;
+};
+
+export const getAllCountries = async function () {
+  const data = await getJSON(`${API_URL}/all`);
+  state.allCountries = data.map((country) => createCountryObject(country));
 };
 
 export const getCountries = async function (region = 'all') {

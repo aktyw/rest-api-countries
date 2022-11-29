@@ -58,6 +58,7 @@ nav {
     height: 50px;
     line-height: 50px;
     padding-left: 30px;
+    background-color: get-color(white);
 
     &::after {
       content: '\276F';

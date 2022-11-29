@@ -11,7 +11,7 @@ class View {
   addHandlerBack(handler) {
     this._parentElement.addEventListener('click', ({ target }) => {
       if (!target.closest('.btn__prev')) return;
-      handler(target);
+      handler();
     });
   }
 
@@ -30,11 +30,19 @@ class View {
     });
   }
 
-  _clear() {
-    this._parentElement.innerHTML = '';
+  addBorderHandler(handler) {
+    this._parentElement.addEventListener('click', ({ target }) => {
+      if (!target.closest('.details-country__border-item')) return;
+      handler(target);
+    });
   }
 
-  getBorderCountries(data) {}
+  getBorderCountries() {
+    return Object.values(this._data)[0].filter((country) => {
+      if (!this._data.countryDetail.borders) return;
+      return this._data.countryDetail.borders.includes(country.shortname);
+    });
+  }
 
   _generateCountryMarkup(data) {
     return `<div class="country">
@@ -51,19 +59,20 @@ class View {
     `;
   }
 
-  _generateDetailCountryMarkup({
-    name,
-    capital,
-    borders,
-    domain,
-    languages,
-    population,
-    flags,
-    currencies,
-    region,
-    subregion,
-  }) {
-    console.log(this._data);
+  _generateDetailCountryMarkup() {
+    const {
+      name,
+      capital,
+      borders,
+      domain,
+      languages,
+      population,
+      flags,
+      currencies,
+      region,
+      subregion,
+      shortname,
+    } = this._data.countryDetail;
     return `
     <section class="details-country">
             <button class="btn btn__prev">Back</button>
@@ -102,9 +111,9 @@ class View {
                   <ul>
                   ${
                     borders
-                      ? borders
-                          .map((border) => {
-                            return `<li class="details-country__border-item">${border}</li>`;
+                      ? this.getBorderCountries()
+                          .map(({ name }) => {
+                            return `<li class="details-country__border-item">${name.common}</li>`;
                           })
                           .join('')
                       : 'No borders'
@@ -121,7 +130,7 @@ class View {
   renderDetailsCountry(data) {
     this._data = data;
     this._clear();
-    const markup = this._generateDetailCountryMarkup(this._data);
+    const markup = this._generateDetailCountryMarkup();
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
@@ -141,6 +150,10 @@ class View {
         this._parentElement.insertAdjacentHTML('afterbegin', markup);
       }
     );
+  }
+
+  _clear() {
+    this._parentElement.innerHTML = '';
   }
 }
 

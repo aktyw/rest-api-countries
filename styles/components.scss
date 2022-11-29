@@ -2,7 +2,7 @@
 
 body {
   font-size: 62.5%;
-  background-color: get-color(white);
+  background-color: get-color(veryLightGray);
   color: get-color(veryDarkBlue);
 }
 
@@ -51,7 +51,7 @@ li {
 }
 
 .icon {
-  width: $homepage;
+  width: 12px;
   margin: 0 5px;
 }
 
@@ -75,7 +75,8 @@ li {
   }
 
   &__mode {
-    padding: 10px 0;
-    box-shadow: none;
+    display: flex;
+    align-items: center;
+    padding: 10px;
   }
 }

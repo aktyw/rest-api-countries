@@ -15,7 +15,7 @@ const controlCountries = async function ({ target }) {
 const controlDetailPage = async function (country) {
   try {
     model.getDetailCountry(country);
-    view.renderDetailsCountry(model.state.countryDetail);
+    view.renderDetailsCountry(model.state);
   } catch (error) {
     console.log(error);
   }
@@ -32,9 +32,11 @@ const goBack = async function () {
 const init = async function () {
   try {
     await model.getCountries();
+    await model.getAllCountries();
     view.addHandlerFilter(controlCountries);
     view.renderCountries(model.state);
     view.addHandlerDetailPage(controlDetailPage);
+    view.addBorderHandler(controlDetailPage);
     view.addHandlerBack(goBack);
   } catch (error) {
     console.log(error);
