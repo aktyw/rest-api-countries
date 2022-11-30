@@ -34,6 +34,11 @@ const controlSearchCountry = function (query) {
   view.renderSearchCountries(model.state);
 };
 
+const controlDarkMode = function () {
+  model.toggleDarkMode();
+  view.renderDarkMode(model.state.darkmode);
+};
+
 const init = async function () {
   try {
     await model.getCountries();
@@ -44,6 +49,7 @@ const init = async function () {
     view.addBorderHandler(controlDetailPage);
     view.addHandlerBack(goBack);
     view.addHandlerSearch(controlSearchCountry);
+    view.addHandlerDarkMode(controlDarkMode);
   } catch (error) {
     console.log(error);
   }

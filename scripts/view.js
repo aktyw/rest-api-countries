@@ -4,10 +4,11 @@ class View {
   _finder = document.querySelector('.finder');
   _search = document.querySelector('.search__input');
   _filter = document.querySelector('.filter__list');
+  _header = document.querySelector('header');
 
-  render(data) {
-    data = this._data;
-  }
+  // render(data) {
+  //   data = this._data;
+  // }
 
   addHandlerBack(handler) {
     this._parentElement.addEventListener('click', ({ target }) => {
@@ -25,6 +26,23 @@ class View {
       const query = e.target.value;
       handler(query);
     });
+  }
+
+  addHandlerDarkMode(handler) {
+    this._header.addEventListener('click', ({ target }) => {
+      if (!target.closest('.btn__mode')) return;
+      handler();
+    });
+  }
+
+  renderDarkMode(data) {
+    if (data) {
+      document.body.classList.add('dark');
+      document.body.classList.remove('light');
+    } else {
+      document.body.classList.remove('dark');
+      document.body.classList.add('light');
+    }
   }
 
   addHandlerDetailPage(handler) {

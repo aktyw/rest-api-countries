@@ -2,8 +2,18 @@
 
 body {
   font-size: 62.5%;
-  background-color: get-color(veryLightGray);
-  color: get-color(veryDarkBlue);
+  transition: 0.2s;
+  transition-property: background-color, color;
+}
+
+body.light {
+  background-color: get-color(primary-background);
+  color: get-color(primary-text);
+}
+
+body.dark {
+  background-color: get-color(primary-background, darkmode);
+  color: get-color(light, darkmode);
 }
 
 body,
@@ -33,6 +43,16 @@ h3 {
   }
 }
 
+img {
+  body.light & {
+    filter: brightness(1);
+  }
+
+  body.dark & {
+    filter: brightness(0.9);
+  }
+}
+
 p,
 li,
 ul,
@@ -40,6 +60,7 @@ span,
 button {
   font-size: 1rem;
 }
+
 summary,
 li {
   list-style: none;
@@ -57,12 +78,21 @@ li {
 
 .btn {
   position: relative;
-  background-color: get-color(white);
   padding: 10px 50px;
   border: none;
   cursor: pointer;
-  box-shadow: $shadow;
   border-radius: 5px;
+
+  body.light & {
+    background-color: get-color(light);
+    color: get-color(secondary-background, darkmode);
+    box-shadow: $shadow;
+  }
+  body.dark & {
+    background-color: get-color(secondary-background, darkmode);
+    color: get-color(light, darkmode);
+    box-shadow: $shadowDark;
+  }
 
   &__prev {
     &::before {

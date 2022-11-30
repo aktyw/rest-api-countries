@@ -11,7 +11,14 @@ header,
 }
 
 header {
-  box-shadow: rgba(36, 36, 36, 0.15) 0px -2px 10px 0px;
+  body.light & {
+    background-color: get-color(light, darkmode);
+    box-shadow: $shadowHeader;
+  }
+  body.dark & {
+    background-color: get-color(secondary-background, darkmode);
+    box-shadow: $shadowHeaderDark;
+  }
 }
 
 nav {
@@ -51,6 +58,13 @@ nav {
   &__list {
     width: 15rem;
     cursor: pointer;
+
+    body.light & {
+      background-color: get-color(light);
+    }
+    body.dark & {
+      background-color: get-color(secondary-background, darkmode);
+    }
   }
 
   &__label {
@@ -58,7 +72,13 @@ nav {
     height: 50px;
     line-height: 50px;
     padding-left: 30px;
-    background-color: get-color(white);
+
+    body.light & {
+      background-color: get-color(light);
+    }
+    body.dark & {
+      background-color: get-color(secondary-background, darkmode);
+    }
 
     &::after {
       content: '\276F';
@@ -76,13 +96,18 @@ nav {
     position: absolute;
     margin-top: 10px;
     z-index: 100;
-    background-color: get-color(white);
+    body.light & {
+      background-color: get-color(light);
+    }
+    body.dark & {
+      background-color: get-color(secondary-background, darkmode);
+    }
 
     @include media() {
       margin-top: 15px;
     }
     & > li {
-      transition: background-color 0.3s;
+      transition: background-color 0.2s;
       padding: 15px 30px;
 
       @include media() {
@@ -91,7 +116,12 @@ nav {
     }
 
     & li:hover {
-      background-color: get-color(lightBlue);
+      body.light & {
+        background-color: get-color(primary-accent);
+      }
+      body.dark & {
+        background-color: get-color(primary-accent, darkmode);
+      }
     }
   }
 }
@@ -99,8 +129,16 @@ nav {
 .filter__label,
 .filter__list,
 .search__input {
-  box-shadow: $shadow;
   border-radius: 5px;
+
+  body.light & {
+    background-color: get-color(light);
+    box-shadow: $shadow;
+  }
+  body.dark & {
+    background-color: get-color(secondary-background, darkmode);
+    box-shadow: $shadowDark;
+  }
 }
 
 .search {
@@ -112,13 +150,29 @@ nav {
     border: none;
     padding: 0 70px;
 
+    body.light & {
+      background-color: get-color(light);
+      box-shadow: $shadow;
+    }
+    body.dark & {
+      background-color: get-color(secondary-background, darkmode);
+      color: get-color(light);
+      box-shadow: $shadowDark;
+    }
+
     @include media {
       min-width: 500px;
     }
 
     &::placeholder {
-      color: get-color(darkGray);
-      opacity: 0.7;
+      opacity: 0.8;
+      body.light & {
+        color: get-color(secondary-background);
+      }
+      body.dark & {
+        opacity: 1;
+        color: get-color(light, darkmode);
+      }
     }
   }
 
@@ -127,7 +181,7 @@ nav {
     left: 30px;
     top: 16px;
     width: $detailpage;
-    opacity: 0.4;
+    opacity: 0.6;
   }
 }
 
@@ -157,13 +211,19 @@ nav {
   flex-direction: column;
   width: 300px;
   border-radius: 10px;
-  box-shadow: $shadow;
   font-size: $homepage;
-  transition: background-color 0.3s;
+  transition: background-color 0.2s;
+
+  body.light & {
+    box-shadow: $shadow;
+  }
+  body.dark & {
+    box-shadow: $shadowDark;
+  }
 
   &:hover {
     cursor: pointer;
-    background-color: get-color(lightBlue);
+    background-color: wheat;
   }
 
   &__flag {
@@ -179,6 +239,25 @@ nav {
     justify-content: center;
     padding: 25px;
     min-height: 220px;
+    border-radius: 0 0 10px 10px;
+    transition: 0.2s;
+    transition-property: background-color, color;
+
+    body.light & {
+      background-color: get-color(light);
+    }
+    body.dark & {
+      background-color: get-color(secondary-background, darkmode);
+    }
+
+    &:hover {
+      body.light & {
+        background-color: get-color(primary-accent);
+      }
+      body.dark & {
+        background-color: get-color(primary-accent, darkmode);
+      }
+    }
   }
 
   &__name {
@@ -249,7 +328,7 @@ nav {
     @include media {
       display: flex;
       flex-wrap: wrap;
-      column-gap: 150px;
+      column-gap: 80px;
       align-items: flex-start;
     }
   }

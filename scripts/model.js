@@ -7,6 +7,7 @@ export const state = {
   countries: '',
   searchCountries: '',
   countryDetail: '',
+  darkmode: false,
 };
 
 const createCountryObject = function (data) {
@@ -24,6 +25,10 @@ const createCountryObject = function (data) {
     domain: country.tld,
     shortname: country.cca3,
   };
+};
+
+export const toggleDarkMode = function () {
+  !state.darkmode ? (state.darkmode = true) : (state.darkmode = false);
 };
 
 export const getDetailCountry = function (name) {
