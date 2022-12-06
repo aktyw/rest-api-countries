@@ -44,12 +44,9 @@ export const getAllCountries = async function () {
 };
 
 export const getSearchCountries = function (data) {
-  state.searchCountries = Object.values(state.allCountries).filter(
-    (country) => {
-      return country.name.common.toLowerCase().includes(data.toLowerCase());
-    }
-  );
-  console.log();
+  state.searchCountries = Object.values(state.countries).filter((country) => {
+    return country.name.common.toLowerCase().includes(data);
+  });
 };
 
 export const getCountries = async function (region = 'all') {

@@ -5,6 +5,7 @@ class View {
   _search = document.querySelector('.search__input');
   _filter = document.querySelector('.filter__list');
   _header = document.querySelector('header');
+  _btnMode = document.querySelector('.btn__mode');
 
   // render(data) {
   //   data = this._data;
@@ -23,7 +24,7 @@ class View {
 
   addHandlerSearch(handler) {
     this._search.addEventListener('input', (e) => {
-      const query = e.target.value;
+      const query = e.target.value.toLowerCase().trim();
       handler(query);
     });
   }
@@ -35,13 +36,15 @@ class View {
     });
   }
 
-  renderDarkMode(data) {
-    if (data) {
-      document.body.classList.add('dark');
-      document.body.classList.remove('light');
+  renderDarkMode(darkmode) {
+    const text = this._btnMode.childNodes[1];
+    text.nodeValue =
+      text.nodeValue === 'Light Mode' ? 'Dark Mode' : 'Light Mode';
+    document.body.classList = darkmode ? 'dark' : 'light';
+    if (darkmode) {
+      this._btnMode.classList.add('mode-active');
     } else {
-      document.body.classList.remove('dark');
-      document.body.classList.add('light');
+      this._btnMode.classList.remove('mode-active');
     }
   }
 
@@ -72,13 +75,19 @@ class View {
 
   _generateCountryMarkup(data) {
     return `<div class="country">
-    <img src="${data.flags['svg']}" alt="flag of ${data.name.common}" class="country__flag">
+    <img src="${data.flags['svg']}" alt="flag of ${
+      data.name.common
+    }" class="country__flag">
     <div class="country__info">
       <h2 class="country__name">${data.name.common}</h2>
       <ul>
-        <li class="country__desc"><span class="country__desc-bold">Population:</span> ${data.population}</li>
-        <li class="country__desc"><span class="country__desc-bold">Region:</span> ${data.region}</li>
-        <li class="country__desc"><span class="country__desc-bold">Capital:</span> ${data.capital}</li>
+        <li class="country__desc"><span class="country__desc-bold">Population:</span> ${data.population.toLocaleString()}</li>
+        <li class="country__desc"><span class="country__desc-bold">Region:</span> ${
+          data.region
+        }</li>
+        <li class="country__desc"><span class="country__desc-bold">Capital:</span> ${
+          data.capital ? data.capital : 'No capital'
+        }</li>
       </ul>
     </div>
   </div>
@@ -110,29 +119,42 @@ class View {
                 <div class="details-country__info-container">
                   <ul>
                     <li value="name" class="country__desc"><span class="country__desc-bold">Native Name: </span>${
-                      Object.entries(name.nativeName)[0][1]?.official
+                      name.nativeName
+                        ? Object.entries(name.nativeName)[0][1]?.official
+                        : ' - '
                     }</li>
-                    <li value="population" class="country__desc"><span class="country__desc-bold">Population: </span>${population}</li>
-                    <li value="region" class="country__desc"><span class="country__desc-bold">Region: </span>${region}</li>
+                    <li value="population" class="country__desc"><span class="country__desc-bold">Population: </span>${population.toLocaleString()}</li>
+                    <li value="region" class="country__desc"><span class="country__desc-bold">Region: </span>${
+                      region ? region : ' - '
+                    }</li>
                     <li value="subregion" class="country__desc"><span class="country__desc-bold">Sub Region: </span>${
-                      subregion ? subregion : 'No sub region'
+                      subregion ? subregion : ' - '
                     }</li>
                     <li value="capital" class="country__desc"><span class="country__desc-bold">Capital: </span>${
-                      capital ? capital : 'No capital'
+                      capital ? capital : ' - '
                     }</li>
                   </ul>
                   <ul>
-                    <li value="domain" class="country__desc"><span class="country__desc-bold">Top Level Domain: </span>${Object.values(
+                    <li value="domain" class="country__desc"><span class="country__desc-bold">Top Level Domain: </span>${
                       domain
-                    )
-                      .map((dom) => `${dom} `)
-                      .join('')}</li>
+                        ? Object.values(domain)
+                            .map((dom) => `${dom} `)
+                            .join('')
+                        : ' - '
+                    }</li>
                     <li value="currencies" class="country__desc"><span class="country__desc-bold">Currencies: </span>${
-                      Object.entries(currencies)[0][1]?.name
-                    } (${Object.entries(currencies)[0][1]?.symbol})</li>
-                    <li value="languages" class="country__desc"><span class="country__desc-bold">Languages: </span>${Object.values(
+                      currencies
+                        ? Object.entries(currencies)[0][1]?.name +
+                          ' (' +
+                          Object.entries(currencies)[0][1]?.symbol +
+                          ')'
+                        : 'No currencies'
+                    }</li>
+                    <li value="languages" class="country__desc"><span class="country__desc-bold">Languages: </span>${
                       languages
-                    ).map((lang) => ` ${lang}`)}</li>
+                        ? Object.values(languages).map((lang) => ` ${lang}`)
+                        : ' - '
+                    }</li>
                   </ul>
                 </div>
                 <div class="details-country__border">
@@ -167,6 +189,7 @@ class View {
     this._data = data;
     this._clear();
     this._finder.classList.remove('hide');
+
     this._data.searchCountries.forEach(
       ({ name, capital, population, flags, region }) => {
         const markup = this._generateCountryMarkup({
@@ -183,7 +206,7 @@ class View {
 
   renderCountries(data) {
     this._data = data;
-    this._clear();
+    this._clear(true);
     this._finder.classList.remove('hide');
 
     this._data.countries.forEach(
@@ -200,8 +223,9 @@ class View {
     );
   }
 
-  _clear() {
+  _clear(search = false) {
     this._parentElement.innerHTML = '';
+    if (search) this._search.value = '';
   }
 }
 

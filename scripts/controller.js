@@ -12,21 +12,13 @@ const controlCountries = async function ({ target }) {
   }
 };
 
-const controlDetailPage = async function (country) {
-  try {
-    model.getDetailCountry(country);
-    view.renderDetailsCountry(model.state);
-  } catch (error) {
-    console.log(error);
-  }
+const controlDetailPage = function (country) {
+  model.getDetailCountry(country);
+  view.renderDetailsCountry(model.state);
 };
 
 const goBack = async function () {
-  try {
-    view.renderCountries(model.state);
-  } catch (error) {
-    console.log(error);
-  }
+  view.renderCountries(model.state);
 };
 
 const controlSearchCountry = function (query) {

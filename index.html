@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.scss" />
     <script src="scripts/controller.js" type="module"></script>
     <title>Rest Countries API</title>
@@ -13,7 +15,7 @@
         <div class="wrapper">
           <nav>
             <h1>Where in the world?</h1>
-            <button class="btn btn__mode"><img class="icon" src="./img/moon-outline.svg" alt="darkmode icon"></span>Dark Mode</button>
+            <button class="btn btn__mode"><span class="icon__mode"><span class="icon__mode-circle"></span></span>Dark Mode</button>
           </nav>
         </div>
       </nav>
@@ -23,7 +25,7 @@
         <div class="search">
           <label for="country-search"></label>
           <div class="input-container">
-            <img class="search__icon" src="./img/search-outline.svg" alt="">
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon search__icon" viewBox="0 0 512 512"><title>Search</title><path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"/></svg>
             <input class="search__input" type="search" id="country-search" name="q" placeholder="Search for a country...">
           </div>
         </div>
@@ -48,57 +50,6 @@
     <main>
       <div class="wrapper">
         <section class="countries">
-
-          <!-- COUNTRY COMPONENT TEMP -->
-          <!-- <div class="country">
-            <img src="../beautiful-shot-of-a-bicycle-in-the-grassy-field-during-sunset-in-tczew-poland.jpg" alt="flag" class="country__flag">
-            <div class="country__info">
-              <h2 class="country__name">Poland</h2>
-              <ul>
-                <li class="country__desc"><span class="country__desc-bold">Population:</span> 40.000</li>
-                <li class="country__desc"><span class="country__desc-bold">Region:</span> Europe</li>
-                <li class="country__desc"><span class="country__desc-bold">Capital:</span> Warsaw</li>
-              </ul>
-            </div>
-          </div> -->
-
-          
-
-          <!-- COUNTRY DETAIL TEMP -->
-          <!-- <section class="details-country">
-            <button class="btn btn__prev">Back</button>
-            <div class="details-country-container">
-              `<img src="../beautiful-shot-of-a-bicycle-in-the-grassy-field-during-sunset-in-tczew-poland.jpg" alt="flag" class="details-country__flag">
-              <div class="details-country__info">
-                <h2 class="country__name">Belgium</h2>
-                <div class="details-country__info-container">
-                  <ul>
-                    <li value="name" class="country__desc"><span class="country__desc-bold">Native Name: </span>Belgie</li>
-                    <li value="population" class="country__desc"><span class="country__desc-bold">Population: </span>24124</li>
-                    <li value="region" class="country__desc"><span class="country__desc-bold">Region: </span>Reg</li>
-                    <li value="subregion" class="country__desc"><span class="country__desc-bold">Sub Region: </span>SRegion</li>
-                    <li value="capital" class="country__desc"><span class="country__desc-bold">Capital: </span>Warsaw</li>
-                  </ul>
-                  <ul>
-                    <li value="domain" class="country__desc"><span class="country__desc-bold">Top Level Domain: </span>.se</li>
-                    <li value="currencies" class="country__desc"><span class="country__desc-bold">Currencies: </span>PLN</li>
-                    <li value="languages" class="country__desc"><span class="country__desc-bold">Languages: </span>Hindi, Polish</li>
-                  </ul>
-                </div>
-                <div class="details-country__border">
-                  <h3>Border Countries:</h3>
-                  <ul>
-                    <li class="details-country__border-item">France</li>
-                    <li class="details-country__border-item">Germany</li>
-                    <li class="details-country__border-item">Netherlands</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            
-          </section> -->
-          
-
         </section>
       </div>
     </main>
