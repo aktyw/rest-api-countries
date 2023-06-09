@@ -1,12 +1,12 @@
 {
-  "name": "rest-countries-api-with-color-theme-switcher-master",
+  "name": "rest-countries-api",
   "version": "1.0.0",
-  "description": "![Design preview for the REST Countries API with color theme switcher coding challenge](./design/desktop-preview.jpg)",
+  "description": "Rest Countries API",
   "scripts": {
     "start": "parcel index.html"
   },
   "keywords": [],
-  "author": "",
+  "author": "Arek Tywonek",
   "license": "ISC",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.0",
